@@ -15,7 +15,7 @@ There are 2 test, one mocking the reddit api, and test the relevant algorithem.
 
 ### `What makes a comment relevant? and how i found them ?`
 
-In reddit the i a attribute call SCORE in each comment,<br />
+In reddit the is an attribute call SCORE in each comment,<br />
 First, i sorted all of the comment of each day by their score.<br />
 Then i chose the first 20 comment with most score,
 And sorted again the comment that left by who has the longest comment,<br />
