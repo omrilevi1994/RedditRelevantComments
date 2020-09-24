@@ -1,5 +1,9 @@
 import axios from 'axios';
 
+interface RedditComment{
+  score: number;
+  body: string;
+}
 export const getRedditDataLastWeek = async (search : string) => {
   const requests = [];
 
@@ -20,14 +24,14 @@ export const buildRedditUrl = (search : string, day: number) => {
   return `http://api.pushshift.io/reddit/comment/search/?q=${search}&after=${day+1}d&before=${day}d&sort=score&size=100`
 }
 
-export const relevantComments = (results: any) => {
-  const relevant = results.map((d : any) => {
+export const relevantComments = (results: Array<Array<RedditComment>>) => {
+  const relevant = results.map((d : Array<RedditComment>) => {
     const sortedComment = d
-    .sort((x: any, y: any) => y.score - x.score)
+    .sort((x: RedditComment, y: RedditComment) => y.score - x.score)
     .slice(0,20)
-    .sort((x: any, y: any) => y.body.length - x.body.length)
+    .sort((x: RedditComment, y: RedditComment) => y.body.length - x.body.length)
     .slice(0,3);
-    const question = d.find((e: any) => e.body[e.body.length-1] === '?');
+    const question = d.find((e: RedditComment) => e.body[e.body.length-1] === '?');
 
     return { comments: sortedComment , question };
 
