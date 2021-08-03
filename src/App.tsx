@@ -3,7 +3,7 @@ import Search from './Search';
 import { relevantComments, getRedditDataLastWeek } from './RedditService';
 import Comment from './Comment';
 import './App.css';
-
+//bla lba
 export interface RedditResult {
    comments: [],
    question: any
